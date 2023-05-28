@@ -10,7 +10,7 @@ def result(s):
 
 def get_birthdays_per_week(a):
     now = datetime.now()
-    interval = timedelta(days=9)
+    interval = timedelta(days=7)
     res = now + interval
     for i in a: 
         for k, v in i.items():
