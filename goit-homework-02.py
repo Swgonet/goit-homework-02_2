@@ -1,11 +1,12 @@
 from datetime import datetime, timedelta
 
-users = [{"petro": '29-05-2011'},
-         {'vasya': '3-06-1999'},
-         {'mykola': '5-12-1555'},
-         {'kapw': '30-01-1490'}]
 weeks = {'Monday': [], 'Tuesday': [], 'Wednesday': [],
          'Thursday': [], 'Friday': [], 'Saturday': [], 'Sunday': []}
+
+def result(s):
+    for k, v in weeks.items():
+        if v:
+            print(f'{k}: {", ".join(v)}')
 
 def get_birthdays_per_week(a):
     now = datetime.now()
@@ -19,9 +20,10 @@ def get_birthdays_per_week(a):
                     weeks['Monday'].append(k)
                 else:
                     weeks[res.strftime('%A')].append(k)
+    return result(weeks)
 
-get_birthdays_per_week(users)
-
-for k, v in weeks.items():
-    if v:
-        print(f'{k}: {", ".join(v)}')
+users = get_birthdays_per_week([{"petro": '30-05-2011'},
+         {'vasya': '4-06-1999'},
+         {'mykola': '5-12-1555'},
+         {'kapw': '30-01-1490'}])
+print(users)
