@@ -10,20 +10,21 @@ def result(s):
 
 def get_birthdays_per_week(a):
     now = datetime.now()
-    interval = timedelta(days=7)
+    interval = timedelta(days=9)
     res = now + interval
     for i in a: 
         for k, v in i.items():
             x = datetime.strptime(v, '%d-%m-%Y')
-            if (res.day or res.month) == (x.day or x.month):
-                if res.day == 'Saturday' or 'Sunday':
+            # print(res.day, res. month, x.day, x.month)
+            if res.day == x.day and res.month == x.month:
+                if res.strftime('%A') == 'Saturday' or res.strftime('%A') == 'Sunday':
                     weeks['Monday'].append(k)
                 else:
                     weeks[res.strftime('%A')].append(k)
     return result(weeks)
 
-users = get_birthdays_per_week([{"petro": '30-05-2011'},
+x = get_birthdays_per_week([{"petro": '30-05-2011'},
          {'vasya': '4-06-1999'},
-         {'mykola': '5-12-1555'},
-         {'kapw': '30-01-1490'}])
-print(users)
+         {'mykola': '6-06-1575'},
+         {'kapw': '5-06-1490'}])
+print(x)
