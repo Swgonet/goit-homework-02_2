@@ -15,6 +15,7 @@ def get_birthdays_per_week(a):
     for i in a: 
         for k, v in i.items():
             x = datetime.strptime(v, '%d-%m-%Y')
+            x = x.replace(year=now.year)
             # print(res.day, res. month, x.day, x.month)
             if res.day == x.day and res.month == x.month:
                 if res.strftime('%A') == 'Saturday' or res.strftime('%A') == 'Sunday':
